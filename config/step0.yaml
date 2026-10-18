@@ -1,0 +1,57 @@
+project_name: cross_hospital_medclip
+
+# Shared template. Copy to config/step0.local.yaml for this machine's paths.
+# With --domain mimic/chexpert, only the selected domain's root is required.
+data:
+  mimic_root: null
+  chexpert_root: null
+  data_dir: "data"
+  output_dir: "outputs"
+  source_patients: 5000
+  target_patients: 1000
+  source_selection_seed: 2026
+  split_seed: 42
+  raw_data_is_external: true
+
+classes:
+  - "Atelectasis"
+  - "Cardiomegaly"
+  - "Consolidation"
+  - "Edema"
+  - "Pleural Effusion"
+
+split:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  subset_seeds: [42, 43, 44]
+  budgets: [0.1, 1.0]
+
+model:
+  medclip_repo: "https://github.com/RyanWangZf/MedCLIP"
+  medclip_commit: "9c3396f20d5d54e4fae241b8cb06ca45848e98c9"
+  weights_version: "medclip-vit-pretrained-2022-10-23"
+  cache_dir: null  # default: <your configured data root>/step0_model
+  processor: "official"
+  device: "auto"
+  cpu_threads: 4
+
+experiment:
+  method: "pretrained"
+  factory: null  # later methods: package.module:function; same train/eval code
+  prompt_templates: 1  # 1 or 5; logits are averaged before sigmoid
+  seed: 42
+  budget: "10pct"
+  batch_size: 4
+  threshold: 0.5
+
+training:
+  epochs: 10
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 3
+
+outputs:
+  data_dir: "data"
+  output_dir: "outputs"
+
