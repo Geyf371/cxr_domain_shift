@@ -1,0 +1,168 @@
+{
+  "medclip_repository": "https://github.com/RyanWangZf/MedCLIP",
+  "medclip_commit": "9c3396f20d5d54e4fae241b8cb06ca45848e98c9",
+  "weights_url": "https://storage.googleapis.com/pytrial/medclip-vit-pretrained.zip",
+  "weights_sha256": "07bf9f917ccce482ea30ec84e533a30c3ad395c424d3624f6b72edf8484f8126",
+  "vision_backbone": "microsoft/swin-tiny-patch4-window7-224",
+  "swin_config_commit": "d00d478bfaf1f417d34a1186673ad4b4be264c51",
+  "text_backbone": "emilyalsentzer/Bio_ClinicalBERT",
+  "bert_config_commit": "d5892b39a4adaed74b92212a44081509db72f87b",
+  "pretraining_data": [
+    "MIMIC-CXR",
+    "CheXpert"
+  ],
+  "scope": "step0_smoke",
+  "transformers": "4.24.0 (official processor; slow BertTokenizer)",
+  "sha256": {
+    "official/medclip/__init__.py": "6ff99937c090193532a53bf3bcfa7f7cacd4c1ec96c68c4a18064fb562d457a1",
+    "official/medclip/modeling_medclip.py": "53286d5012eb19591b276bf1d0ea68967f4d202b0e61ae53cdef831e18e43475",
+    "official/medclip/dataset.py": "9769c7bca5db7ac0cf7b0ecbeffb45ce17e44db65f7c9a30ad188cf9e0793451",
+    "official/medclip/prompts.py": "6ade3c881df48447cffa9d19bcca8b5334f736aa456656c5880c8c460d1d1400",
+    "official/medclip/constants.py": "a17984a1afdeccbc1957772e4d1d29618606245cd0ce65091b71132c28e5b4c3",
+    "bert/config.json": "4a470c65801cab55fc1cc5854aa2bfebc18428ac1989777e9acefc5a9f0c1444",
+    "bert/vocab.txt": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02",
+    "swin/config.json": "b99b2d1d80b05ff592979047b4a34fb459dd53b82c8036bae1c2a9d1ea2c5ed3",
+    "bert/tokenizer_config.json": "faf16d4999ec84f0da47d4d409e54bc21299ece2b8cdfbb612c071a0014a9c52",
+    "pytorch_model.bin": "07bf9f917ccce482ea30ec84e533a30c3ad395c424d3624f6b72edf8484f8126"
+  },
+  "macro_auc": 0.5937500000000001,
+  "macro_f1": 0.31,
+  "macro_auprc": 0.6238095238095238,
+  "macro_auc_valid_classes": 4,
+  "macro_f1_valid_classes": 5,
+  "macro_auprc_valid_classes": 5,
+  "num_samples": 16,
+  "no_valid_sample_count": 0,
+  "threshold": 0.5,
+  "skipped_no_valid_samples": 0,
+  "method": "pretrained_5prompts",
+  "budget": "check16",
+  "seed": 42,
+  "domain": "chexpert",
+  "split": "test",
+  "evaluation_set_sha256": "30a3a41c9b1768ce48221fe872a20122da13888e52c1726e69df09865a36f27f",
+  "feature_shapes": {
+    "v": [
+      16,
+      512
+    ],
+    "q": [
+      16,
+      5
+    ],
+    "z": [
+      16,
+      517
+    ],
+    "sample_id": [
+      16
+    ],
+    "patient_id": [
+      16
+    ],
+    "image_id": [
+      16
+    ],
+    "labels": [
+      16,
+      5
+    ],
+    "mask": [
+      16,
+      5
+    ],
+    "classes": [
+      5
+    ],
+    "text_features": [
+      5,
+      2,
+      5,
+      512
+    ]
+  },
+  "feature_layer": "vision_model.projection_head -> L2 normalization",
+  "prompt_protocol": "fixed length 77; mean template logits then sigmoid",
+  "prompts": {
+    "Atelectasis": {
+      "positive": [
+        "A chest X-ray showing Atelectasis.",
+        "The radiograph demonstrates Atelectasis.",
+        "There is evidence of Atelectasis on this chest radiograph.",
+        "This chest X-ray is positive for Atelectasis.",
+        "Findings are consistent with Atelectasis on the chest X-ray."
+      ],
+      "negative": [
+        "No evidence of Atelectasis on the chest X-ray.",
+        "The radiograph shows no Atelectasis.",
+        "There is no evidence of Atelectasis on this chest radiograph.",
+        "This chest X-ray is negative for Atelectasis.",
+        "The chest X-ray does not show Atelectasis."
+      ]
+    },
+    "Cardiomegaly": {
+      "positive": [
+        "A chest X-ray showing Cardiomegaly.",
+        "The radiograph demonstrates Cardiomegaly.",
+        "There is evidence of Cardiomegaly on this chest radiograph.",
+        "This chest X-ray is positive for Cardiomegaly.",
+        "Findings are consistent with Cardiomegaly on the chest X-ray."
+      ],
+      "negative": [
+        "No evidence of Cardiomegaly on the chest X-ray.",
+        "The radiograph shows no Cardiomegaly.",
+        "There is no evidence of Cardiomegaly on this chest radiograph.",
+        "This chest X-ray is negative for Cardiomegaly.",
+        "The chest X-ray does not show Cardiomegaly."
+      ]
+    },
+    "Consolidation": {
+      "positive": [
+        "A chest X-ray showing Consolidation.",
+        "The radiograph demonstrates Consolidation.",
+        "There is evidence of Consolidation on this chest radiograph.",
+        "This chest X-ray is positive for Consolidation.",
+        "Findings are consistent with Consolidation on the chest X-ray."
+      ],
+      "negative": [
+        "No evidence of Consolidation on the chest X-ray.",
+        "The radiograph shows no Consolidation.",
+        "There is no evidence of Consolidation on this chest radiograph.",
+        "This chest X-ray is negative for Consolidation.",
+        "The chest X-ray does not show Consolidation."
+      ]
+    },
+    "Edema": {
+      "positive": [
+        "A chest X-ray showing Edema.",
+        "The radiograph demonstrates Edema.",
+        "There is evidence of Edema on this chest radiograph.",
+        "This chest X-ray is positive for Edema.",
+        "Findings are consistent with Edema on the chest X-ray."
+      ],
+      "negative": [
+        "No evidence of Edema on the chest X-ray.",
+        "The radiograph shows no Edema.",
+        "There is no evidence of Edema on this chest radiograph.",
+        "This chest X-ray is negative for Edema.",
+        "The chest X-ray does not show Edema."
+      ]
+    },
+    "Pleural Effusion": {
+      "positive": [
+        "A chest X-ray showing Pleural Effusion.",
+        "The radiograph demonstrates Pleural Effusion.",
+        "There is evidence of Pleural Effusion on this chest radiograph.",
+        "This chest X-ray is positive for Pleural Effusion.",
+        "Findings are consistent with Pleural Effusion on the chest X-ray."
+      ],
+      "negative": [
+        "No evidence of Pleural Effusion on the chest X-ray.",
+        "The radiograph shows no Pleural Effusion.",
+        "There is no evidence of Pleural Effusion on this chest radiograph.",
+        "This chest X-ray is negative for Pleural Effusion.",
+        "The chest X-ray does not show Pleural Effusion."
+      ]
+    }
+  }
+}

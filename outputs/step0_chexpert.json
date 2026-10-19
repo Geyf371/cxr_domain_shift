@@ -1,0 +1,287 @@
+{
+  "domain": "chexpert",
+  "domain_ready": true,
+  "status": "passed",
+  "code_sha256": "aed56bb035c3d2882b69d6c6f5c32c74a5ce84442782e2c53bf7d4637f4e8413",
+  "classes": [
+    "Atelectasis",
+    "Cardiomegaly",
+    "Consolidation",
+    "Edema",
+    "Pleural Effusion"
+  ],
+  "data_protocol": {
+    "classes": [
+      "Atelectasis",
+      "Cardiomegaly",
+      "Consolidation",
+      "Edema",
+      "Pleural Effusion"
+    ],
+    "data": {
+      "source_patients": 5000,
+      "target_patients": 1000,
+      "source_selection_seed": 2026,
+      "split_seed": 42
+    },
+    "split": {
+      "train_ratio": 0.8,
+      "val_ratio": 0.1,
+      "test_ratio": 0.1,
+      "subset_seeds": [
+        42,
+        43,
+        44
+      ],
+      "budgets": [
+        0.1,
+        1.0
+      ]
+    }
+  },
+  "data_audit": {
+    "num_patients": 1000,
+    "num_images": 1000,
+    "num_evaluable_images": 762,
+    "split_counts": {
+      "test": 1000
+    },
+    "all_selected_images_exist": true,
+    "patients_disjoint": true,
+    "labels_verified_against_raw": true,
+    "nested_subsets": {},
+    "selection_sha256_without_local_paths": "2ee59b06208b091050eb6a1e605f2332773ee5741e210dbaa6ec7e4672917043",
+    "no_valid_sample_count": 238
+  },
+  "environment": {
+    "python": "3.12.3",
+    "packages": {
+      "torch": "2.14.1",
+      "torchvision": "0.29.1",
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "Pillow": "13.0.0",
+      "PyYAML": "6.0.3",
+      "transformers": "4.24.0",
+      "huggingface-hub": "0.25.2"
+    },
+    "device": "cpu",
+    "cuda_available": false
+  },
+  "model": {
+    "medclip_repository": "https://github.com/RyanWangZf/MedCLIP",
+    "medclip_commit": "9c3396f20d5d54e4fae241b8cb06ca45848e98c9",
+    "weights_url": "https://storage.googleapis.com/pytrial/medclip-vit-pretrained.zip",
+    "weights_sha256": "07bf9f917ccce482ea30ec84e533a30c3ad395c424d3624f6b72edf8484f8126",
+    "vision_backbone": "microsoft/swin-tiny-patch4-window7-224",
+    "swin_config_commit": "d00d478bfaf1f417d34a1186673ad4b4be264c51",
+    "text_backbone": "emilyalsentzer/Bio_ClinicalBERT",
+    "bert_config_commit": "d5892b39a4adaed74b92212a44081509db72f87b",
+    "pretraining_data": [
+      "MIMIC-CXR",
+      "CheXpert"
+    ],
+    "scope": "Downstream splits only; institutions may have been seen during pretraining.",
+    "transformers": "4.24.0 (official processor; slow BertTokenizer)",
+    "sha256": {
+      "official/medclip/__init__.py": "6ff99937c090193532a53bf3bcfa7f7cacd4c1ec96c68c4a18064fb562d457a1",
+      "official/medclip/modeling_medclip.py": "53286d5012eb19591b276bf1d0ea68967f4d202b0e61ae53cdef831e18e43475",
+      "official/medclip/dataset.py": "9769c7bca5db7ac0cf7b0ecbeffb45ce17e44db65f7c9a30ad188cf9e0793451",
+      "official/medclip/prompts.py": "6ade3c881df48447cffa9d19bcca8b5334f736aa456656c5880c8c460d1d1400",
+      "official/medclip/constants.py": "a17984a1afdeccbc1957772e4d1d29618606245cd0ce65091b71132c28e5b4c3",
+      "bert/config.json": "4a470c65801cab55fc1cc5854aa2bfebc18428ac1989777e9acefc5a9f0c1444",
+      "bert/vocab.txt": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02",
+      "swin/config.json": "b99b2d1d80b05ff592979047b4a34fb459dd53b82c8036bae1c2a9d1ea2c5ed3",
+      "bert/tokenizer_config.json": "faf16d4999ec84f0da47d4d409e54bc21299ece2b8cdfbb612c071a0014a9c52",
+      "pytorch_model.bin": "07bf9f917ccce482ea30ec84e533a30c3ad395c424d3624f6b72edf8484f8126"
+    }
+  },
+  "model_feature_dim": 512,
+  "joint_feature_dim": 517,
+  "model_check": {
+    "num_samples": 16,
+    "split": "test",
+    "probability_shape": [
+      16,
+      5
+    ],
+    "feature_shapes": {
+      "v": [
+        16,
+        512
+      ],
+      "q": [
+        16,
+        5
+      ],
+      "z": [
+        16,
+        517
+      ],
+      "text_features": [
+        5,
+        2,
+        1,
+        512
+      ]
+    },
+    "trainable_parameters": [],
+    "trainable_parameter_count": 0,
+    "total_parameter_count": 136616059,
+    "repeat_probability_max_abs": 0.0,
+    "repeat_feature_drift": {
+      "mean": 4.163336342344337e-17,
+      "std": 6.655553224256149e-17,
+      "p95": 1.3877787807814457e-16,
+      "max": 2.220446049250313e-16,
+      "max_absolute_difference": 0.0,
+      "num_samples": 16,
+      "tolerance": 1e-05,
+      "expect_frozen": true,
+      "within_tolerance": true
+    },
+    "five_prompt_image_drift": {
+      "mean": 4.163336342344337e-17,
+      "std": 6.655553224256149e-17,
+      "p95": 1.3877787807814457e-16,
+      "max": 2.220446049250313e-16,
+      "max_absolute_difference": 0.0,
+      "num_samples": 16,
+      "tolerance": 1e-05,
+      "expect_frozen": true,
+      "within_tolerance": true
+    },
+    "model_weights_and_buffers_unchanged": true,
+    "eval_mode": true
+  },
+  "training_loop_check": {
+    "not_required": "target is test-only"
+  },
+  "single_prompt_metrics": {
+    "per_class": [
+      {
+        "class_name": "Atelectasis",
+        "auc": null,
+        "f1": 0.0,
+        "auprc": 1.0,
+        "valid_count": 4,
+        "positive_count": 4,
+        "negative_count": 0
+      },
+      {
+        "class_name": "Cardiomegaly",
+        "auc": 0.33333333333333337,
+        "f1": 0.0,
+        "auprc": 0.3333333333333333,
+        "valid_count": 4,
+        "positive_count": 1,
+        "negative_count": 3
+      },
+      {
+        "class_name": "Consolidation",
+        "auc": 0.3125,
+        "f1": 0.0,
+        "auprc": 0.2111111111111111,
+        "valid_count": 10,
+        "positive_count": 2,
+        "negative_count": 8
+      },
+      {
+        "class_name": "Edema",
+        "auc": 0.6666666666666667,
+        "f1": 0.0,
+        "auprc": 0.5833333333333333,
+        "valid_count": 5,
+        "positive_count": 2,
+        "negative_count": 3
+      },
+      {
+        "class_name": "Pleural Effusion",
+        "auc": 0.0,
+        "f1": 0.0,
+        "auprc": 0.1,
+        "valid_count": 10,
+        "positive_count": 1,
+        "negative_count": 9
+      }
+    ],
+    "macro_auc": 0.328125,
+    "macro_f1": 0.0,
+    "macro_auprc": 0.4455555555555555,
+    "macro_auc_valid_classes": 4,
+    "macro_f1_valid_classes": 5,
+    "macro_auprc_valid_classes": 5,
+    "num_samples": 16,
+    "no_valid_sample_count": 0,
+    "threshold": 0.5,
+    "skipped_no_valid_samples": 0
+  },
+  "five_prompt_metrics": {
+    "per_class": [
+      {
+        "class_name": "Atelectasis",
+        "auc": null,
+        "f1": 0.4,
+        "auprc": 1.0,
+        "valid_count": 4,
+        "positive_count": 4,
+        "negative_count": 0
+      },
+      {
+        "class_name": "Cardiomegaly",
+        "auc": 1.0,
+        "f1": 0.5,
+        "auprc": 1.0,
+        "valid_count": 4,
+        "positive_count": 1,
+        "negative_count": 3
+      },
+      {
+        "class_name": "Consolidation",
+        "auc": 0.375,
+        "f1": 0.0,
+        "auprc": 0.22619047619047616,
+        "valid_count": 10,
+        "positive_count": 2,
+        "negative_count": 8
+      },
+      {
+        "class_name": "Edema",
+        "auc": 0.6666666666666667,
+        "f1": 0.4,
+        "auprc": 0.75,
+        "valid_count": 5,
+        "positive_count": 2,
+        "negative_count": 3
+      },
+      {
+        "class_name": "Pleural Effusion",
+        "auc": 0.33333333333333337,
+        "f1": 0.25,
+        "auprc": 0.14285714285714285,
+        "valid_count": 10,
+        "positive_count": 1,
+        "negative_count": 9
+      }
+    ],
+    "macro_auc": 0.5937500000000001,
+    "macro_f1": 0.31,
+    "macro_auprc": 0.6238095238095238,
+    "macro_auc_valid_classes": 4,
+    "macro_f1_valid_classes": 5,
+    "macro_auprc_valid_classes": 5,
+    "num_samples": 16,
+    "no_valid_sample_count": 0,
+    "threshold": 0.5,
+    "skipped_no_valid_samples": 0
+  },
+  "hypothesis_tools": {
+    "h2_repeat_check": "passed",
+    "h3_paired_comparison": "passed"
+  },
+  "scope": "Step 0 interface acceptance on 16 images, not full H1-H3 experiment results",
+  "limitations": [
+    "Medical pretraining includes both datasets; conclusions concern these downstream splits."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "step0_ready": true,
+  "domains": [
+    "mimic",
+    "chexpert"
+  ],
+  "code_sha256": "aed56bb035c3d2882b69d6c6f5c32c74a5ce84442782e2c53bf7d4637f4e8413",
+  "model_weights_sha256": "07bf9f917ccce482ea30ec84e533a30c3ad395c424d3624f6b72edf8484f8126",
+  "data_protocol": {
+    "classes": [
+      "Atelectasis",
+      "Cardiomegaly",
+      "Consolidation",
+      "Edema",
+      "Pleural Effusion"
+    ],
+    "data": {
+      "source_patients": 5000,
+      "target_patients": 1000,
+      "source_selection_seed": 2026,
+      "split_seed": 42
+    },
+    "split": {
+      "train_ratio": 0.8,
+      "val_ratio": 0.1,
+      "test_ratio": 0.1,
+      "subset_seeds": [
+        42,
+        43,
+        44
+      ],
+      "budgets": [
+        0.1,
+        1.0
+      ]
+    }
+  },
+  "scope": "Step 0 shared infrastructure and per-domain 16-image acceptance; later experiments remain with Step 1+"
+}

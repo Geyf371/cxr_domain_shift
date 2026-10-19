@@ -1,0 +1,6 @@
+domain,split,class_name,positive_count,negative_count,unknown_count,no_valid_sample_count
+chexpert,test,Atelectasis,161,3,836,238
+chexpert,test,Cardiomegaly,89,73,838,238
+chexpert,test,Consolidation,52,181,767,238
+chexpert,test,Edema,197,121,682,238
+chexpert,test,Pleural Effusion,249,213,538,238
