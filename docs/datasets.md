@@ -1,40 +1,23 @@
 # 数据准备及交接说明
 
-本项目以 MIMIC-CXR 和 Stanford CheXpert 为两个机构来源，不额外编造 `hospital_id`。原始数据放在项目外，各域负责人在有访问资格的环境保留数据、患者级索引与本机配置。
+本项目以 MIMIC-CXR 和 Stanford CheXpert 为两个机构来源。原始数据和模型缓存放在项目外；本次交接通过 Git 提供固定患者级索引、嵌套名单和验收产物，通过网盘提供对应图像、原始 CSV 与模型。本机配置不提交。具体资源清单和接手命令见 [Step 1 接手说明](step1_handoff.md)。
 
 ## 源域：MIMIC-CXR-JPG 2.1.0
 
-访问需满足 PhysioNet 的资质认证、培训与数据使用协议。使用 JPG、metadata 和 CheXpert 标签 CSV，不需要报告文本。接受以下文件名，`.csv.gz` 直接读取，无需先解压：
+使用 JPG、metadata 和 CheXpert 标签 CSV，不需要报告文本。接受以下文件名，`.csv.gz` 直接读取，无需先解压：
 
 - `mimic-cxr-2.0.0-metadata.csv.gz`，或 `mimic-cxr-metadata.csv.gz`（也支持对应 `.csv`）；
 - `mimic-cxr-2.0.0-chexpert.csv.gz`（也支持 `.csv`）。
 
-`data.mimic_root` 指向这两个表和图像树所在根目录。支持 `files/p10/p########/s########/<dicom_id>.jpg`，以及根目录直接含 `p10/...` 或 `file/p10/...` 的结构。ZIP 内 `p10/...` 的结构可由 `extract_selected_mimic.py` 按选中图像提取至 `<mimic_root>/files/p10/...`。
+`data.mimic_root` 指向这两个表和图像树所在根目录。
 
 先保留 `ViewPosition=AP/PA`。对每名患者按数值检查 ID、图像 ID 排序，取一次符合条件的检查和一张图像，再以 selection seed 2026 抽 5000 名患者；以 split seed 42 按患者划分 4000 train、500 val、500 test。患者 ID 添加 `mimic:` 前缀。
 
 源域 train 再以种子 42、43、44 各构造一次 10%/100% 嵌套患者子集，分别为 400/4000 人；同一种子内小预算是大预算子集，所有方法共享这些名单。预算按患者数定义，不因某人有效标签较少而重新抽样。
 
-### 只有 p10 分片时
-
-选择和重建 manifest 均指定 `--mimic-buckets p10`，以免抽到未下载分片的患者。提取前 `--allow-missing-images` 只生成 `mimic_selection.csv`；提取后不带该标记重建正式索引，确认 5000 张选中图像全部存在。
-
-p10 是患者 ID 分片限定子队列，不能代表全 MIMIC 的随机样本；这一限制由组长确定是否接受，并在下游结论中保留。如需全队列抽样，应提供对应图像分片，重新生成源域索引、子集和报告。验收通过只表示当前子队列的接口与配置检查通过，不消除这一抽样限制。
-
 ## 目标域：CheXpert
 
-从 Stanford AIMI 官方页面进入 AIMI Redivis，完成注册并接受条款。优先使用 small 图像和公开 `train.csv`。`data.chexpert_root` 指向 CSV 与已解压图像的共同根目录，例如：
-
-```text
-CheXpert-v1.0-small/
-  train.csv
-  train/
-    patient00001/
-      study1/
-        view1_frontal.jpg
-```
-
-CSV 必须含 `Path`、`Frontal/Lateral`、`AP/PA` 和五类标签列。路径带 `CheXpert-v1.0-small/` 前缀时自动解析；也支持根目录配置为外面一层。
+使用 small 图像和公开 `train.csv`。
 
 只保留 `Frontal/Lateral=Frontal` 且 `AP/PA` 列为 `AP` 或 `PA` 的记录；从 Path 的 patient 目录解析患者、study 目录解析检查，按检查 ID、路径排序取每人一图。以 selection seed 2026 抽 1000 名不同患者，全部作为外部 test。患者 ID 添加 `chexpert:` 前缀。本项目不使用该数据集进行训练、验证、提示选择或阈值选择。
 
@@ -61,16 +44,13 @@ CSV 必须含 `Path`、`Frontal/Lateral`、`AP/PA` 和五类标签列。路径�
 | `outputs/class_frequencies_<domain>.csv` | `run_step0.py`：供 Git 交接的聚合类别频数副本 |
 | `outputs/step0_handoff.json` | `check_handoff.py`：两域代码、模型资产、抽样协议一致，且两域已通过验收 |
 
-两个域的构建、模型验收独立执行；目标域同学无需运行 `build_subsets.py`，因为少样本预算只针对源域训练患者。详细命令见项目 README。
 
-两人各保留自己的患者级索引和数据；Git 提交脚本、共享配置、文档与指定聚合报告。向 Step 1 交接时同时说明原始数据、索引、模型缓存的保存位置及访问方式；需要直接传递患者清单或特征时，在许可的数据环境进行。Step 1 在新机器上可按相同数据与配置重建索引，并核对报告中的不含路径的 selection SHA256；若图像子队列不同，不能假定会重建出同一清单。
+Git 提交脚本、共享配置、文档、两域索引、源域嵌套名单、类别频数以及现有验收预测/特征/报告。网盘只需提供名单对应的全部图像、原始 CSV 和一份完整模型缓存；不必交接完整图像下载包或 Python 虚拟环境。
 
-如获准将两个 manifest 集中到一台机器，可用 `merge_manifests.py` 生成 `all_manifest.csv` 和合并频数，但不是 Step 0 独立域交接的必需命令；合并不会复制图像或修复另一台机器的绝对路径。
+现有 manifest 含负责人的绝对路径。Step 1 在新机器上须同时修改个人配置与 manifest 的 `image_path`，保持患者、划分及标签不变；仅改配置不会修复索引。
 
 ## 官方模型和预处理
 
 `prepare_model.py` 固定官方 MedCLIP 代码提交、公开 ViT 医疗预训练权重（实际视觉骨干为 Swin Tiny）以及 Bio_ClinicalBERT 词表与配置，记录资产 SHA256。所有模型文件放项目外。
 
 `load_medclip` 严格恢复完整权重，使用官方 `MedCLIPProcessor` 的图像处理；文本用同一官方 BERT 词表的 slow tokenizer，统一 padding/truncation 至 77。通过官方底层图像/文本模块支持 CPU/CUDA，规避上游封装写死 CUDA 的问题。不会重新训练预训练模型，也不将 ImageNet 初始化当作医疗预训练权重。
-
-官方代码：https://github.com/RyanWangZf/MedCLIP ，提交 `9c3396f20d5d54e4fae241b8cb06ca45848e98c9`。预训练使用过 MIMIC-CXR 与 CheXpert，结论限于本次下游划分。具体版本、权重来源和软件环境写在每域验收报告中。

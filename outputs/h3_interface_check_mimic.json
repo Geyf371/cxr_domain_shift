@@ -1,0 +1,124 @@
+{
+  "num_samples": 16,
+  "single": {
+    "per_class": [
+      {
+        "class_name": "Atelectasis",
+        "auc": 0.3333333333333333,
+        "f1": 0.0,
+        "auprc": 0.8055555555555556,
+        "valid_count": 4,
+        "positive_count": 3,
+        "negative_count": 1
+      },
+      {
+        "class_name": "Cardiomegaly",
+        "auc": 0.5,
+        "f1": 0.5714285714285714,
+        "auprc": 0.5,
+        "valid_count": 7,
+        "positive_count": 3,
+        "negative_count": 4
+      },
+      {
+        "class_name": "Consolidation",
+        "auc": 0.0,
+        "f1": 0.0,
+        "auprc": 0.5,
+        "valid_count": 2,
+        "positive_count": 1,
+        "negative_count": 1
+      },
+      {
+        "class_name": "Edema",
+        "auc": 0.0,
+        "f1": 0.0,
+        "auprc": 0.38333333333333336,
+        "valid_count": 6,
+        "positive_count": 3,
+        "negative_count": 3
+      },
+      {
+        "class_name": "Pleural Effusion",
+        "auc": 0.125,
+        "f1": 0.0,
+        "auprc": 0.7260912698412698,
+        "valid_count": 10,
+        "positive_count": 8,
+        "negative_count": 2
+      }
+    ],
+    "macro_auc": 0.19166666666666665,
+    "macro_f1": 0.11428571428571428,
+    "macro_auprc": 0.5829960317460318,
+    "macro_auc_valid_classes": 5,
+    "macro_f1_valid_classes": 5,
+    "macro_auprc_valid_classes": 5,
+    "num_samples": 16,
+    "no_valid_sample_count": 0,
+    "threshold": 0.5
+  },
+  "five": {
+    "per_class": [
+      {
+        "class_name": "Atelectasis",
+        "auc": 0.6666666666666666,
+        "f1": 0.0,
+        "auprc": 0.9166666666666665,
+        "valid_count": 4,
+        "positive_count": 3,
+        "negative_count": 1
+      },
+      {
+        "class_name": "Cardiomegaly",
+        "auc": 0.25,
+        "f1": 0.5,
+        "auprc": 0.3873015873015873,
+        "valid_count": 7,
+        "positive_count": 3,
+        "negative_count": 4
+      },
+      {
+        "class_name": "Consolidation",
+        "auc": 0.0,
+        "f1": 0.0,
+        "auprc": 0.5,
+        "valid_count": 2,
+        "positive_count": 1,
+        "negative_count": 1
+      },
+      {
+        "class_name": "Edema",
+        "auc": 0.0,
+        "f1": 0.0,
+        "auprc": 0.38333333333333336,
+        "valid_count": 6,
+        "positive_count": 3,
+        "negative_count": 3
+      },
+      {
+        "class_name": "Pleural Effusion",
+        "auc": 0.0625,
+        "f1": 0.3333333333333333,
+        "auprc": 0.6635912698412698,
+        "valid_count": 10,
+        "positive_count": 8,
+        "negative_count": 2
+      }
+    ],
+    "macro_auc": 0.19583333333333333,
+    "macro_f1": 0.16666666666666666,
+    "macro_auprc": 0.5701785714285714,
+    "macro_auc_valid_classes": 5,
+    "macro_f1_valid_classes": 5,
+    "macro_auprc_valid_classes": 5,
+    "num_samples": 16,
+    "no_valid_sample_count": 0,
+    "threshold": 0.5
+  },
+  "delta_five_minus_single": {
+    "macro_auc": 0.00416666666666668,
+    "macro_f1": 0.052380952380952375,
+    "macro_auprc": -0.012817460317460339
+  }
+}

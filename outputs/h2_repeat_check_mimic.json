@@ -1,0 +1,11 @@
+{
+  "mean": 6.938893903907228e-18,
+  "std": 2.6874220530932865e-17,
+  "p95": 2.7755575615628914e-17,
+  "max": 1.1102230246251565e-16,
+  "max_absolute_difference": 0.0,
+  "num_samples": 16,
+  "tolerance": 1e-05,
+  "expect_frozen": true,
+  "within_tolerance": true
+}

@@ -1,0 +1,2 @@
+macro_auc,macro_f1,macro_auprc,macro_auc_valid_classes,macro_f1_valid_classes,macro_auprc_valid_classes,num_samples,no_valid_sample_count,threshold,skipped_no_valid_samples,method,budget,seed,domain,split,scope,evaluation_set_sha256
+0.19166666666666665,0.11428571428571428,0.5829960317460318,5,5,5,16,0,0.5,0,pretrained_repeat,check16,42,mimic,train,step0_smoke,372921c1a61956c87d3aa62075eb3f7e2a0c6b3fa91fdbcfe2ae370742bb7333

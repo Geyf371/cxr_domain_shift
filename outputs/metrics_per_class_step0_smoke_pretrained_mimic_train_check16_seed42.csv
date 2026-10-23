@@ -1,0 +1,6 @@
+class_name,auc,f1,auprc,valid_count,positive_count,negative_count,method,budget,seed,domain,split
+Atelectasis,0.3333333333333333,0.0,0.8055555555555556,4,3,1,pretrained,check16,42,mimic,train
+Cardiomegaly,0.5,0.5714285714285714,0.5,7,3,4,pretrained,check16,42,mimic,train
+Consolidation,0.0,0.0,0.5,2,1,1,pretrained,check16,42,mimic,train
+Edema,0.0,0.0,0.38333333333333336,6,3,3,pretrained,check16,42,mimic,train
+Pleural Effusion,0.125,0.0,0.7260912698412698,10,8,2,pretrained,check16,42,mimic,train

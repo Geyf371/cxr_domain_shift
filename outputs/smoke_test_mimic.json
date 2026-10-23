@@ -1,0 +1,26 @@
+{
+  "test_type": "data_only",
+  "domain": "mimic",
+  "num_samples": 16,
+  "split": "train",
+  "unique_patients": 16,
+  "all_images_exist": true,
+  "all_sample_images_decoded": true,
+  "patients_disjoint_across_splits": true,
+  "classes": [
+    "Atelectasis",
+    "Cardiomegaly",
+    "Consolidation",
+    "Edema",
+    "Pleural Effusion"
+  ],
+  "label_shape": [
+    16,
+    5
+  ],
+  "mask_shape": [
+    16,
+    5
+  ],
+  "patient_ids_unique_in_batch": true
+}

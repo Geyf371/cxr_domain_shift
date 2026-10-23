@@ -1,0 +1,16 @@
+domain,split,class_name,positive_count,negative_count,unknown_count,no_valid_sample_count
+mimic,test,Atelectasis,61,0,439,294
+mimic,test,Cardiomegaly,71,40,389,294
+mimic,test,Consolidation,13,16,471,294
+mimic,test,Edema,28,46,426,294
+mimic,test,Pleural Effusion,48,58,394,294
+mimic,train,Atelectasis,503,26,3471,2433
+mimic,train,Cardiomegaly,485,240,3275,2433
+mimic,train,Consolidation,105,162,3733,2433
+mimic,train,Edema,247,399,3354,2433
+mimic,train,Pleural Effusion,456,423,3121,2433
+mimic,val,Atelectasis,67,0,433,309
+mimic,val,Cardiomegaly,55,32,413,309
+mimic,val,Consolidation,15,18,467,309
+mimic,val,Edema,32,37,431,309
+mimic,val,Pleural Effusion,59,42,399,309
