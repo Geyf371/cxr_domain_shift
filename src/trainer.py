@@ -9,6 +9,14 @@ import copy
 import torch
 from .data import CLASS_NAMES
 from .evaluator import evaluate_model, select_batch
+from .model_interface import validate_model_batch_output
+from .resource_metrics import (
+    model_device,
+    parameter_statistics,
+    peak_gpu_memory_mb,
+    reset_peak_gpu_memory,
+    timed_device_block,
+)
 
 
 def masked_bce_loss(logits: torch.Tensor, labels: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
@@ -34,6 +42,7 @@ def train_source_epoch(model, loader, optimizer, device: str, output_fn: Callabl
         batch = select_batch(batch, keep)
         optimizer.zero_grad(set_to_none=True)
         output = output_fn(model, batch, device) if output_fn else model.forward_batch(batch)
+        output = validate_model_batch_output(output, len(batch["domain"]))
         loss = masked_bce_loss(output.logits, batch["labels"].to(device), batch["mask"].to(device))
         if not torch.isfinite(loss):
             raise ValueError("Non-finite source training loss")
@@ -73,12 +82,23 @@ def fit_source(model, train_loader, val_loader, config, output_dir, provenance=N
     optimizer = torch.optim.AdamW(grouping(config) if grouping else params,
                                  lr=float(cfg.get("learning_rate", 1e-3)), weight_decay=float(cfg.get("weight_decay", 1e-4)))
     best, stale, history = -float("inf"), 0, []
-    checkpoint = Path(output_dir) / f"checkpoint_{exp['method']}_{exp['budget']}_seed{exp['seed']}.pt"
+    training_seconds = 0.0
+    training_peak_memory: float | None = None
+    device = model_device(model)
+    scope = str(exp.get("scope", "experiment"))
+    prefix = "" if scope == "experiment" else f"{scope}_"
+    checkpoint = Path(output_dir) / f"checkpoint_{prefix}{exp['method']}_{exp['budget']}_seed{exp['seed']}.pt"
     for epoch in range(int(cfg.get("epochs", 10))):
-        train_stats = train_source_epoch(model, train_loader, optimizer, str(params[0].device))
+        reset_peak_gpu_memory(device)
+        with timed_device_block(device) as timing:
+            train_stats = train_source_epoch(model, train_loader, optimizer, str(params[0].device))
+        training_seconds += timing["seconds"]
+        epoch_peak = peak_gpu_memory_mb(device)
+        if epoch_peak is not None:
+            training_peak_memory = max(training_peak_memory or 0.0, epoch_peak)
         result = evaluate_model(model, val_loader, domain="mimic", split="val", method=exp["method"],
                                 budget=exp["budget"], seed=int(exp["seed"]), output_dir=output_dir,
-                                threshold=float(exp.get("threshold", 0.5)), provenance=provenance)
+                                threshold=float(exp.get("threshold", 0.5)), scope=scope, provenance=provenance)
         score = result["metrics"]["macro_auc"]
         if not torch.isfinite(torch.tensor(score)):
             raise ValueError("Source validation has no defined class AUC; cannot select a checkpoint")
@@ -91,5 +111,16 @@ def fit_source(model, train_loader, val_loader, config, output_dir, provenance=N
         if stale >= int(cfg.get("patience", 3)):
             break
     load_checkpoint(checkpoint, model, str(params[0].device))
-    return {"history": history, "checkpoint": str(checkpoint), "best_val_macro_auc": best}
+    resources = {
+        **parameter_statistics(model),
+        "device": str(device),
+        "training_performed": True,
+        "training_epochs": len(history),
+        "training_seconds": training_seconds,
+        "peak_gpu_memory_mb": training_peak_memory,
+        "peak_gpu_memory_supported": training_peak_memory is not None,
+        "timing_definition": "sum of source training epochs, including data loading and optimizer updates; validation excluded",
+    }
+    return {"history": history, "checkpoint": str(checkpoint), "best_val_macro_auc": best,
+            "resources": resources}
 

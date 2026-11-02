@@ -4,3 +4,4 @@ valid/
 archive*
 __pycache__/
 config/step0.local.yaml
+outputs/step1/

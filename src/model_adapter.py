@@ -6,7 +6,7 @@ from torch import nn
 from torch.nn import functional as F
 from .data import CLASS_NAMES
 from .model_interface import ModelBatchOutput
-from .prompts import build_prompts
+from .prompts import PROMPT_SET_VERSION, build_prompts
 
 
 class MedCLIPAdapter(nn.Module):
@@ -16,6 +16,7 @@ class MedCLIPAdapter(nn.Module):
         self.backbone.requires_grad_(False).eval()
         self.templates = templates
         self.feature_dim = bundle.vision_feature_dim
+        self.prompt_set_version = PROMPT_SET_VERSION
         self.prompt_texts = build_prompts(templates=templates)
         texts = [text for disease in CLASS_NAMES for sign in ("positive", "negative")
                  for text in self.prompt_texts[disease][sign]]

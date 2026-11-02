@@ -39,4 +39,6 @@ Step 0 已验证每域 16 张有效图像的 5 维概率、`v/q/z` 特征缓存�
 
 Step 1 按任务要求实现其可训练方法，通过配置接入共用训练和评测入口；本版本不包含正式线性探针、LoRA 方法或完整预算实验。默认 `experiment.method: pretrained` 为冻结推理模型，不可直接训练。
 
+Step 1 的统一模型接口、A/B/C 交付目录、128患者验收、资源统计及自动检查命令见 [Step1 接口与交付规范](docs/step1_interface_and_delivery.md)。
+
 MedCLIP 预训练已使用过 MIMIC-CXR 和 CheXpert，结论限定于本次下游划分。具体限制见 [数据说明](docs/datasets.md) 和 [接手说明](docs/step1_handoff.md)。

@@ -1,4 +1,4 @@
-"""Fixed positive/negative prompt templates for the five classes."""
+"""Versioned, disease-specific prompts for frozen MedCLIP inference."""
 
 from __future__ import annotations
 
@@ -6,23 +6,94 @@ from typing import Iterable
 
 from .data import CLASS_NAMES
 
-SINGLE_POSITIVE = "A chest X-ray showing {disease}."
-SINGLE_NEGATIVE = "No evidence of {disease} on the chest X-ray."
+PROMPT_SET_VERSION = "clinical_v1"
 
-POSITIVE_TEMPLATES = [
-    "A chest X-ray showing {disease}.",
-    "The radiograph demonstrates {disease}.",
-    "There is evidence of {disease} on this chest radiograph.",
-    "This chest X-ray is positive for {disease}.",
-    "Findings are consistent with {disease} on the chest X-ray.",
-]
-NEGATIVE_TEMPLATES = [
-    "No evidence of {disease} on the chest X-ray.",
-    "The radiograph shows no {disease}.",
-    "There is no evidence of {disease} on this chest radiograph.",
-    "This chest X-ray is negative for {disease}.",
-    "The chest X-ray does not show {disease}.",
-]
+# The first pair is the single-template baseline.  The five-prompt condition
+# uses all five pairs for the same disease and averages their logits.  Keeping
+# explicit disease entries makes the protocol auditable and avoids silently
+# treating a generic sentence template as disease-specific prompt design.
+DISEASE_PROMPTS = {
+    "Atelectasis": {
+        "positive": [
+            "A chest X-ray showing atelectasis.",
+            "The radiograph demonstrates an atelectatic pulmonary opacity.",
+            "There is lung volume loss consistent with atelectasis.",
+            "This chest radiograph is positive for atelectasis.",
+            "Findings include linear or dependent atelectatic change.",
+        ],
+        "negative": [
+            "No evidence of atelectasis on the chest X-ray.",
+            "The radiograph shows no focal or subsegmental atelectasis.",
+            "There is no atelectatic opacity or associated lung volume loss.",
+            "This chest radiograph is negative for atelectasis.",
+            "The lungs show no findings of collapse or underexpansion.",
+        ],
+    },
+    "Cardiomegaly": {
+        "positive": [
+            "A chest X-ray showing cardiomegaly.",
+            "The radiograph demonstrates an enlarged cardiac silhouette.",
+            "The cardiac size is increased on this chest radiograph.",
+            "This chest X-ray is positive for cardiomegaly.",
+            "The cardiomediastinal silhouette is abnormally enlarged.",
+        ],
+        "negative": [
+            "No evidence of cardiomegaly on the chest X-ray.",
+            "The cardiac silhouette is not enlarged.",
+            "The heart size is within normal limits on this radiograph.",
+            "This chest X-ray is negative for cardiomegaly.",
+            "The cardiomediastinal silhouette is normal in size.",
+        ],
+    },
+    "Consolidation": {
+        "positive": [
+            "A chest X-ray showing pulmonary consolidation.",
+            "The radiograph demonstrates a focal air-space consolidation.",
+            "There is dense pulmonary air-space opacity consistent with consolidation.",
+            "This chest X-ray is positive for consolidation.",
+            "Findings include a lobar or segmental consolidative opacity.",
+        ],
+        "negative": [
+            "No evidence of pulmonary consolidation on the chest X-ray.",
+            "The radiograph shows no focal air-space consolidation.",
+            "There is no dense consolidative pulmonary opacity.",
+            "This chest X-ray is negative for consolidation.",
+            "No lobar or segmental consolidation is identified.",
+        ],
+    },
+    "Edema": {
+        "positive": [
+            "A chest X-ray showing pulmonary edema.",
+            "The radiograph demonstrates interstitial or alveolar pulmonary edema.",
+            "There is pulmonary vascular congestion consistent with edema.",
+            "This chest X-ray is positive for pulmonary edema.",
+            "Bilateral perihilar opacities are compatible with pulmonary edema.",
+        ],
+        "negative": [
+            "No evidence of pulmonary edema on the chest X-ray.",
+            "The radiograph shows no interstitial or alveolar edema.",
+            "There is no pulmonary vascular congestion.",
+            "This chest X-ray is negative for pulmonary edema.",
+            "No perihilar edema pattern is identified.",
+        ],
+    },
+    "Pleural Effusion": {
+        "positive": [
+            "A chest X-ray showing pleural effusion.",
+            "The radiograph demonstrates pleural fluid.",
+            "There is blunting of a costophrenic angle consistent with pleural effusion.",
+            "This chest X-ray is positive for pleural effusion.",
+            "Findings include a layering or dependent pleural effusion.",
+        ],
+        "negative": [
+            "No evidence of pleural effusion on the chest X-ray.",
+            "The radiograph shows no pleural fluid.",
+            "The costophrenic angles are sharp without pleural effusion.",
+            "This chest X-ray is negative for pleural effusion.",
+            "No layering or dependent pleural fluid is identified.",
+        ],
+    },
+}
 
 
 def build_prompts(
@@ -30,14 +101,16 @@ def build_prompts(
     *,
     templates: int = 1,
 ) -> dict[str, dict[str, list[str]]]:
+    class_names = list(class_names)
     if templates not in (1, 5):
         raise ValueError("templates must be 1 or 5")
-    positives = POSITIVE_TEMPLATES[:templates]
-    negatives = NEGATIVE_TEMPLATES[:templates]
+    missing = [name for name in class_names if name not in DISEASE_PROMPTS]
+    if missing:
+        raise ValueError(f"No {PROMPT_SET_VERSION} prompts for classes: {missing}")
     return {
         disease: {
-            "positive": [template.format(disease=disease) for template in positives],
-            "negative": [template.format(disease=disease) for template in negatives],
+            "positive": DISEASE_PROMPTS[disease]["positive"][:templates],
+            "negative": DISEASE_PROMPTS[disease]["negative"][:templates],
         }
         for disease in class_names
     }
