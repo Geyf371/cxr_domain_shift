@@ -61,7 +61,7 @@ python scripts/run_experiment.py --config /path/to/personal.yaml --action eval -
 
 公共模型接口保持factory/forward_batch/ModelBatchOutput不变。本包使用原Step0产物schema并增加包级manifest，不假装满足C新分支的全部强制字段。对接时需要schema兼容层，并修复其相对checkpoint路径重复拼接问题。C新增资源统计可以选择性整合，不能用其旧trainer覆盖本分支的梯度累积实现。
 
-已有elapsed_seconds包含训练、每轮验证及checkpoint保存/恢复；peak_cuda_memory_bytes是训练/验证阶段CUDA峰值已分配张量内存，不是整卡显存占用。无法从旧日志精确恢复纯训练耗时，统一1000图像推理计时也尚未完成，manifest中以null表示，不能填0或把总耗时改名冒充。后续另行统一补测；无需仅为新增字段重训12组。
+已有elapsed_seconds包含训练、每轮验证及checkpoint保存/恢复；peak_cuda_memory_bytes是训练/验证阶段CUDA峰值已分配张量内存，不是整卡显存占用。无法从旧日志精确恢复纯训练耗时，原交付manifest中以null表示。后续已完成同配置纯训练资源测量和1000图像独立推理计时，合并表及口径见 [资源记录](lora_resource_records.md)，补充包v2与原包配套使用，原实验结果不改写。
 
 ## 已有验证与待办
 
