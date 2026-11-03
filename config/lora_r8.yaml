@@ -1,0 +1,59 @@
+project_name: cross_hospital_medclip
+data:
+  mimic_root: null
+  chexpert_root: null
+  data_dir: data
+  output_dir: outputs/step1/lora_r8
+  source_patients: 5000
+  target_patients: 1000
+  source_selection_seed: 2026
+  split_seed: 42
+  raw_data_is_external: true
+classes:
+- Atelectasis
+- Cardiomegaly
+- Consolidation
+- Edema
+- Pleural Effusion
+split:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  subset_seeds:
+  - 42
+  - 43
+  - 44
+  budgets:
+  - 0.1
+  - 1.0
+model:
+  medclip_repo: https://github.com/RyanWangZf/MedCLIP
+  medclip_commit: 9c3396f20d5d54e4fae241b8cb06ca45848e98c9
+  weights_version: medclip-vit-pretrained-2022-10-23
+  cache_dir: null
+  processor: official
+  device: auto
+  cpu_threads: 4
+experiment:
+  method: lora_r8
+  factory: src.lora:build_lora
+  prompt_templates: 1
+  seed: 42
+  budget: 10pct
+  batch_size: 16
+  threshold: 0.5
+training:
+  epochs: 10
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 3
+  lora_learning_rate: 0.0001
+  head_learning_rate: 0.001
+  gradient_accumulation_steps: 4
+outputs:
+  data_dir: data
+  output_dir: outputs
+lora:
+  rank: 8
+  alpha: 16
+  dropout: 0.05

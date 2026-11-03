@@ -40,3 +40,7 @@ Step 0 已验证每域 16 张有效图像的 5 维概率、`v/q/z` 特征缓存�
 Step 1 按任务要求实现其可训练方法，通过配置接入共用训练和评测入口；本版本不包含正式线性探针、LoRA 方法或完整预算实验。默认 `experiment.method: pretrained` 为冻结推理模型，不可直接训练。
 
 MedCLIP 预训练已使用过 MIMIC-CXR 和 CheXpert，结论限定于本次下游划分。具体限制见 [数据说明](docs/datasets.md) 和 [接手说明](docs/step1_handoff.md)。
+
+## 成员B：LoRA Step1 交付
+
+LoRA-r8/r16通过现有factory接入，训练与评测约定不变。实现见 [LoRA说明](docs/lora_implementation.md)，12组结果、离线代码分支和checkpoint的交接方式见 [交付说明](docs/lora_delivery.md)。大型实验产物位于仓库外，不提交Git。
