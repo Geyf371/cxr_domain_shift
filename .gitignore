@@ -4,3 +4,7 @@ valid/
 archive*
 __pycache__/
 config/step0.local.yaml
+config/step1_linear_probe.local.yaml
+config/.tmp/
+outputs/
+logs/

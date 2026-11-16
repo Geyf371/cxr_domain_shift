@@ -1,0 +1,54 @@
+# Step 1 · 成员A: Linear Probe
+# 完整配置（不是片段）：可直接 --config 传入。
+# 本机路径请复制为 config/step1_linear_probe.local.yaml 后修改，勿提交。
+
+project_name: cross_hospital_medclip
+
+data:
+  mimic_root: null          # 指向解压后的 mimic 目录
+  chexpert_root: null       # 指向解压后的 chexpert 目录
+  data_dir: "data"
+  output_dir: "outputs/step1"   # run_experiment 读 data.output_dir
+  source_patients: 5000
+  target_patients: 1000
+  source_selection_seed: 2026
+  split_seed: 42
+  raw_data_is_external: true
+
+classes:
+  - "Atelectasis"
+  - "Cardiomegaly"
+  - "Consolidation"
+  - "Edema"
+  - "Pleural Effusion"
+
+split:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  subset_seeds: [42, 43, 44]
+  budgets: [0.1, 1.0]
+
+model:
+  medclip_repo: "https://github.com/RyanWangZf/MedCLIP"
+  medclip_commit: "9c3396f20d5d54e4fae241b8cb06ca45848e98c9"
+  weights_version: "medclip-vit-pretrained-2022-10-23"
+  cache_dir: null
+  processor: "official"
+  device: "auto"
+  cpu_threads: 4
+
+experiment:
+  method: "linear_probe"
+  factory: "src.step1_methods.linear_probe:build_model"
+  prompt_templates: 1        # 与零样本单模板一致；5 模板对比见成员C
+  seed: 42                   # 42 / 43 / 44
+  budget: "10pct"            # 10pct / 100pct
+  batch_size: 64             # 实验要求 batch=64；主干全冻结，前向不建图
+  threshold: 0.5
+
+training:
+  epochs: 10
+  learning_rate: 0.001       # 实验要求: AdamW lr=1e-3
+  weight_decay: 0.0001       # 实验要求: wd=1e-4
+  patience: 3                # 源域 val Macro-AUC 连续 3 轮不升
