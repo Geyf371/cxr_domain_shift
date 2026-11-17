@@ -1,0 +1,552 @@
+{
+  "status": "passed",
+  "scope": "experiment",
+  "domains": [
+    "mimic",
+    "chexpert"
+  ],
+  "seed": 42,
+  "budget_label": "100pct",
+  "batch_size": 4,
+  "prompt_set_version": "clinical_v1",
+  "training": {
+    "training_performed": false,
+    "training_seconds": 0.0,
+    "trainable_parameters": 0,
+    "reason": "Member C frozen prompt inference has no training stage"
+  },
+  "results": {
+    "mimic": {
+      "input_images": 500,
+      "single": {
+        "valid": true,
+        "identity": {
+          "method": "pretrained",
+          "budget": "100pct",
+          "seed": 42,
+          "domain": "mimic",
+          "split": "test",
+          "scope": "experiment"
+        },
+        "num_samples": 206,
+        "feature_shapes": {
+          "v": [
+            206,
+            512
+          ],
+          "q": [
+            206,
+            5
+          ],
+          "z": [
+            206,
+            517
+          ],
+          "sample_id": [
+            206
+          ],
+          "patient_id": [
+            206
+          ],
+          "image_id": [
+            206
+          ],
+          "labels": [
+            206,
+            5
+          ],
+          "mask": [
+            206,
+            5
+          ],
+          "classes": [
+            5
+          ],
+          "text_features": [
+            5,
+            2,
+            1,
+            512
+          ]
+        },
+        "resources": {
+          "total_parameters": 136616059,
+          "trainable_parameters": 0,
+          "device": "cpu",
+          "inference_samples": 206,
+          "inference_batches": 107,
+          "inference_model_seconds": 6.489777172002505,
+          "inference_end_to_end_seconds": 17.3264155830002,
+          "peak_gpu_memory_mb": null,
+          "peak_gpu_memory_supported": false
+        },
+        "training_checked": false
+      },
+      "five": {
+        "valid": true,
+        "identity": {
+          "method": "pretrained_5prompts",
+          "budget": "100pct",
+          "seed": 42,
+          "domain": "mimic",
+          "split": "test",
+          "scope": "experiment"
+        },
+        "num_samples": 206,
+        "feature_shapes": {
+          "v": [
+            206,
+            512
+          ],
+          "q": [
+            206,
+            5
+          ],
+          "z": [
+            206,
+            517
+          ],
+          "sample_id": [
+            206
+          ],
+          "patient_id": [
+            206
+          ],
+          "image_id": [
+            206
+          ],
+          "labels": [
+            206,
+            5
+          ],
+          "mask": [
+            206,
+            5
+          ],
+          "classes": [
+            5
+          ],
+          "text_features": [
+            5,
+            2,
+            5,
+            512
+          ]
+        },
+        "resources": {
+          "total_parameters": 136616059,
+          "trainable_parameters": 0,
+          "device": "cpu",
+          "inference_samples": 206,
+          "inference_batches": 107,
+          "inference_model_seconds": 6.577926171015861,
+          "inference_end_to_end_seconds": 17.431555999999546,
+          "peak_gpu_memory_mb": null,
+          "peak_gpu_memory_supported": false
+        },
+        "training_checked": false
+      },
+      "prompt_comparison": {
+        "num_samples": 206,
+        "single": {
+          "per_class": [
+            {
+              "class_name": "Atelectasis",
+              "auc": null,
+              "f1": 0.28169014084507044,
+              "auprc": 1.0,
+              "valid_count": 61,
+              "positive_count": 61,
+              "negative_count": 0
+            },
+            {
+              "class_name": "Cardiomegaly",
+              "auc": 0.6619718309859155,
+              "f1": 0.6440677966101694,
+              "auprc": 0.7767852660784635,
+              "valid_count": 111,
+              "positive_count": 71,
+              "negative_count": 40
+            },
+            {
+              "class_name": "Consolidation",
+              "auc": 0.3894230769230769,
+              "f1": 0.1111111111111111,
+              "auprc": 0.3938149761956155,
+              "valid_count": 29,
+              "positive_count": 13,
+              "negative_count": 16
+            },
+            {
+              "class_name": "Edema",
+              "auc": 0.47826086956521735,
+              "f1": 0.45161290322580644,
+              "auprc": 0.4277640820559049,
+              "valid_count": 74,
+              "positive_count": 28,
+              "negative_count": 46
+            },
+            {
+              "class_name": "Pleural Effusion",
+              "auc": 0.41522988505747127,
+              "f1": 0.42105263157894735,
+              "auprc": 0.43872051260170936,
+              "valid_count": 106,
+              "positive_count": 48,
+              "negative_count": 58
+            }
+          ],
+          "macro_auc": 0.4862214156329202,
+          "macro_f1": 0.38190691667422094,
+          "macro_auprc": 0.6074169673863387,
+          "macro_auc_valid_classes": 4,
+          "macro_f1_valid_classes": 5,
+          "macro_auprc_valid_classes": 5,
+          "num_samples": 206,
+          "no_valid_sample_count": 0,
+          "threshold": 0.5
+        },
+        "five": {
+          "per_class": [
+            {
+              "class_name": "Atelectasis",
+              "auc": null,
+              "f1": 0.4155844155844156,
+              "auprc": 1.0,
+              "valid_count": 61,
+              "positive_count": 61,
+              "negative_count": 0
+            },
+            {
+              "class_name": "Cardiomegaly",
+              "auc": 0.5390845070422535,
+              "f1": 0.6619718309859155,
+              "auprc": 0.6832497487920145,
+              "valid_count": 111,
+              "positive_count": 71,
+              "negative_count": 40
+            },
+            {
+              "class_name": "Consolidation",
+              "auc": 0.3918269230769231,
+              "f1": 0.42857142857142855,
+              "auprc": 0.44061003099464635,
+              "valid_count": 29,
+              "positive_count": 13,
+              "negative_count": 16
+            },
+            {
+              "class_name": "Edema",
+              "auc": 0.3866459627329193,
+              "f1": 0.18867924528301888,
+              "auprc": 0.30740859265762965,
+              "valid_count": 74,
+              "positive_count": 28,
+              "negative_count": 46
+            },
+            {
+              "class_name": "Pleural Effusion",
+              "auc": 0.305316091954023,
+              "f1": 0.14814814814814814,
+              "auprc": 0.36695237483233484,
+              "valid_count": 106,
+              "positive_count": 48,
+              "negative_count": 58
+            }
+          ],
+          "macro_auc": 0.4057183712015297,
+          "macro_f1": 0.36859101371458536,
+          "macro_auprc": 0.5596441494553251,
+          "macro_auc_valid_classes": 4,
+          "macro_f1_valid_classes": 5,
+          "macro_auprc_valid_classes": 5,
+          "num_samples": 206,
+          "no_valid_sample_count": 0,
+          "threshold": 0.5
+        },
+        "delta_five_minus_single": {
+          "macro_auc": -0.0805030444313905,
+          "macro_f1": -0.013315902959635584,
+          "macro_auprc": -0.04777281793101351
+        }
+      },
+      "frozen_feature_check": {
+        "mean": 4.203757083532146e-17,
+        "std": 7.830086362965902e-17,
+        "p95": 2.220446049250313e-16,
+        "max": 2.220446049250313e-16,
+        "max_absolute_difference": 0.0,
+        "num_samples": 206,
+        "tolerance": 1e-05,
+        "expect_frozen": true,
+        "within_tolerance": true
+      }
+    },
+    "chexpert": {
+      "input_images": 1000,
+      "single": {
+        "valid": true,
+        "identity": {
+          "method": "pretrained",
+          "budget": "100pct",
+          "seed": 42,
+          "domain": "chexpert",
+          "split": "test",
+          "scope": "experiment"
+        },
+        "num_samples": 762,
+        "feature_shapes": {
+          "v": [
+            762,
+            512
+          ],
+          "q": [
+            762,
+            5
+          ],
+          "z": [
+            762,
+            517
+          ],
+          "sample_id": [
+            762
+          ],
+          "patient_id": [
+            762
+          ],
+          "image_id": [
+            762
+          ],
+          "labels": [
+            762,
+            5
+          ],
+          "mask": [
+            762,
+            5
+          ],
+          "classes": [
+            5
+          ],
+          "text_features": [
+            5,
+            2,
+            1,
+            512
+          ]
+        },
+        "resources": {
+          "total_parameters": 136616059,
+          "trainable_parameters": 0,
+          "device": "cpu",
+          "inference_samples": 762,
+          "inference_batches": 250,
+          "inference_model_seconds": 21.375524028957443,
+          "inference_end_to_end_seconds": 22.626483249998273,
+          "peak_gpu_memory_mb": null,
+          "peak_gpu_memory_supported": false
+        },
+        "training_checked": false
+      },
+      "five": {
+        "valid": true,
+        "identity": {
+          "method": "pretrained_5prompts",
+          "budget": "100pct",
+          "seed": 42,
+          "domain": "chexpert",
+          "split": "test",
+          "scope": "experiment"
+        },
+        "num_samples": 762,
+        "feature_shapes": {
+          "v": [
+            762,
+            512
+          ],
+          "q": [
+            762,
+            5
+          ],
+          "z": [
+            762,
+            517
+          ],
+          "sample_id": [
+            762
+          ],
+          "patient_id": [
+            762
+          ],
+          "image_id": [
+            762
+          ],
+          "labels": [
+            762,
+            5
+          ],
+          "mask": [
+            762,
+            5
+          ],
+          "classes": [
+            5
+          ],
+          "text_features": [
+            5,
+            2,
+            5,
+            512
+          ]
+        },
+        "resources": {
+          "total_parameters": 136616059,
+          "trainable_parameters": 0,
+          "device": "cpu",
+          "inference_samples": 762,
+          "inference_batches": 250,
+          "inference_model_seconds": 21.4814928480082,
+          "inference_end_to_end_seconds": 22.688763250000193,
+          "peak_gpu_memory_mb": null,
+          "peak_gpu_memory_supported": false
+        },
+        "training_checked": false
+      },
+      "prompt_comparison": {
+        "num_samples": 762,
+        "single": {
+          "per_class": [
+            {
+              "class_name": "Atelectasis",
+              "auc": 0.035196687370600416,
+              "f1": 0.0935672514619883,
+              "auprc": 0.9418137412129376,
+              "valid_count": 164,
+              "positive_count": 161,
+              "negative_count": 3
+            },
+            {
+              "class_name": "Cardiomegaly",
+              "auc": 0.5599507464983838,
+              "f1": 0.5853658536585366,
+              "auprc": 0.6304988335419083,
+              "valid_count": 162,
+              "positive_count": 89,
+              "negative_count": 73
+            },
+            {
+              "class_name": "Consolidation",
+              "auc": 0.32171695707607306,
+              "f1": 0.12903225806451613,
+              "auprc": 0.17690244480909334,
+              "valid_count": 233,
+              "positive_count": 52,
+              "negative_count": 181
+            },
+            {
+              "class_name": "Edema",
+              "auc": 0.4503502957586945,
+              "f1": 0.39603960396039606,
+              "auprc": 0.6198219682903209,
+              "valid_count": 318,
+              "positive_count": 197,
+              "negative_count": 121
+            },
+            {
+              "class_name": "Pleural Effusion",
+              "auc": 0.30872786922337236,
+              "f1": 0.24193548387096775,
+              "auprc": 0.4399061139719986,
+              "valid_count": 462,
+              "positive_count": 249,
+              "negative_count": 213
+            }
+          ],
+          "macro_auc": 0.3351885111854248,
+          "macro_f1": 0.28918809020328096,
+          "macro_auprc": 0.5617886203652518,
+          "macro_auc_valid_classes": 5,
+          "macro_f1_valid_classes": 5,
+          "macro_auprc_valid_classes": 5,
+          "num_samples": 762,
+          "no_valid_sample_count": 0,
+          "threshold": 0.5
+        },
+        "five": {
+          "per_class": [
+            {
+              "class_name": "Atelectasis",
+              "auc": 0.31262939958592134,
+              "f1": 0.6693877551020408,
+              "auprc": 0.9681022525718004,
+              "valid_count": 164,
+              "positive_count": 161,
+              "negative_count": 3
+            },
+            {
+              "class_name": "Cardiomegaly",
+              "auc": 0.5459442819762967,
+              "f1": 0.6146341463414634,
+              "auprc": 0.6255944194726585,
+              "valid_count": 162,
+              "positive_count": 89,
+              "negative_count": 73
+            },
+            {
+              "class_name": "Consolidation",
+              "auc": 0.44746068848278786,
+              "f1": 0.3048780487804878,
+              "auprc": 0.23431717876861563,
+              "valid_count": 233,
+              "positive_count": 52,
+              "negative_count": 181
+            },
+            {
+              "class_name": "Edema",
+              "auc": 0.3579938750681714,
+              "f1": 0.1791044776119403,
+              "auprc": 0.5233297940603308,
+              "valid_count": 318,
+              "positive_count": 197,
+              "negative_count": 121
+            },
+            {
+              "class_name": "Pleural Effusion",
+              "auc": 0.32544261553255277,
+              "f1": 0.16519174041297935,
+              "auprc": 0.4389360570112554,
+              "valid_count": 462,
+              "positive_count": 249,
+              "negative_count": 213
+            }
+          ],
+          "macro_auc": 0.397894172129146,
+          "macro_f1": 0.38663923364978237,
+          "macro_auprc": 0.5580559403769321,
+          "macro_auc_valid_classes": 5,
+          "macro_f1_valid_classes": 5,
+          "macro_auprc_valid_classes": 5,
+          "num_samples": 762,
+          "no_valid_sample_count": 0,
+          "threshold": 0.5
+        },
+        "delta_five_minus_single": {
+          "macro_auc": 0.06270566094372121,
+          "macro_f1": 0.09745114344650141,
+          "macro_auprc": -0.0037326799883197204
+        }
+      },
+      "frozen_feature_check": {
+        "mean": 3.9192912549103295e-17,
+        "std": 7.546186811139727e-17,
+        "p95": 2.220446049250313e-16,
+        "max": 2.220446049250313e-16,
+        "max_absolute_difference": 0.0,
+        "num_samples": 762,
+        "tolerance": 1e-05,
+        "expect_frozen": true,
+        "within_tolerance": true
+      }
+    }
+  }
+}

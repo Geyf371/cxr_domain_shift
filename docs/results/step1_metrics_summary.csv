@@ -1,0 +1,55 @@
+method,budget,domain,split,metric,mean,std,seeds,source,notes
+linear_probe,100pct,chexpert,test,macro_auc,0.8748,0.0261,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column chexpert/test; values rounded to 4 decimals
+linear_probe,100pct,chexpert,test,macro_auprc,0.9264,0.0016,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column chexpert/test; values rounded to 4 decimals
+linear_probe,100pct,chexpert,test,macro_f1,0.5124,0.0046,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column chexpert/test; values rounded to 4 decimals
+linear_probe,100pct,mimic,test,macro_auc,0.8837,0.0016,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/test; values rounded to 4 decimals
+linear_probe,100pct,mimic,test,macro_auprc,0.9052,0.0024,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/test; values rounded to 4 decimals
+linear_probe,100pct,mimic,test,macro_f1,0.5156,0.0072,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/test; values rounded to 4 decimals
+linear_probe,100pct,mimic,val,macro_auc,0.9129,0.0021,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/val; values rounded to 4 decimals
+linear_probe,100pct,mimic,val,macro_auprc,0.9292,0.0048,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/val; values rounded to 4 decimals
+linear_probe,100pct,mimic,val,macro_f1,0.5895,0.0215,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/val; values rounded to 4 decimals
+linear_probe,10pct,chexpert,test,macro_auc,0.8638,0.0368,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column chexpert/test; values rounded to 4 decimals
+linear_probe,10pct,chexpert,test,macro_auprc,0.9152,0.0043,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column chexpert/test; values rounded to 4 decimals
+linear_probe,10pct,chexpert,test,macro_f1,0.4381,0.0796,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column chexpert/test; values rounded to 4 decimals
+linear_probe,10pct,mimic,test,macro_auc,0.8737,0.0057,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/test; values rounded to 4 decimals
+linear_probe,10pct,mimic,test,macro_auprc,0.8959,0.0071,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/test; values rounded to 4 decimals
+linear_probe,10pct,mimic,test,macro_f1,0.4569,0.0914,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/test; values rounded to 4 decimals
+linear_probe,10pct,mimic,val,macro_auc,0.9116,0.0125,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/val; values rounded to 4 decimals
+linear_probe,10pct,mimic,val,macro_auprc,0.9344,0.0121,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/val; values rounded to 4 decimals
+linear_probe,10pct,mimic,val,macro_f1,0.4758,0.0461,3,member_a/docs/step1_results_tables.md,three-seed summary; source table column mimic/val; values rounded to 4 decimals
+lora_r16,100pct,chexpert,test,macro_auc,0.8673686105062751,0.029458742321789005,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,100pct,chexpert,test,macro_auprc,0.9278125859830618,0.002428635462375679,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,100pct,chexpert,test,macro_f1,0.5125523223493776,0.0008260465437566819,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,100pct,mimic,test,macro_auc,0.8914013264110993,0.007686149455101407,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,100pct,mimic,test,macro_auprc,0.9113814364738064,0.0077992296064914556,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,100pct,mimic,test,macro_f1,0.5192605528737463,0.001041744620259737,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,10pct,chexpert,test,macro_auc,0.8400776023385608,0.058710081350211454,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,10pct,chexpert,test,macro_auprc,0.9214270036242261,0.010329421065694212,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,10pct,chexpert,test,macro_f1,0.47270195029695383,0.012763401627228084,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,10pct,mimic,test,macro_auc,0.8852862452315476,0.00373829593967168,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,10pct,mimic,test,macro_auprc,0.9079153241688663,0.004622848847572806,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r16,10pct,mimic,test,macro_f1,0.48482293961746015,0.00710774570857889,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,100pct,chexpert,test,macro_auc,0.8616470934294123,0.031968845798349035,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,100pct,chexpert,test,macro_auprc,0.9279845447239957,0.0024284894838386825,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,100pct,chexpert,test,macro_f1,0.5108883984705284,0.001572262331626376,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,100pct,mimic,test,macro_auc,0.8908511972877128,0.006611653948966942,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,100pct,mimic,test,macro_auprc,0.9128042506427342,0.009024529671141833,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,100pct,mimic,test,macro_f1,0.5173960901179245,0.0013559481618228653,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,10pct,chexpert,test,macro_auc,0.8540666835646397,0.04142949316820432,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,10pct,chexpert,test,macro_auprc,0.922526640713516,0.008694321816113756,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,10pct,chexpert,test,macro_f1,0.4931913368031822,0.014913732091477238,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,10pct,mimic,test,macro_auc,0.8841943104329407,0.004397364693822747,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,10pct,mimic,test,macro_auprc,0.9071294690983907,0.005706780640126265,3,member_b/test_metrics_mean_std.csv,three-seed summary
+lora_r8,10pct,mimic,test,macro_f1,0.49460487675497816,0.02334841368979034,3,member_b/test_metrics_mean_std.csv,three-seed summary
+pretrained,100pct,chexpert,test,macro_auc,0.3351885111854248,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained,100pct,chexpert,test,macro_auprc,0.5617886203652518,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained,100pct,chexpert,test,macro_f1,0.28918809020328096,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained,100pct,mimic,test,macro_auc,0.4862214156329202,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained,100pct,mimic,test,macro_auprc,0.6074169673863387,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained,100pct,mimic,test,macro_f1,0.38190691667422094,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained_5prompts,100pct,chexpert,test,macro_auc,0.397894172129146,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained_5prompts,100pct,chexpert,test,macro_auprc,0.5580559403769321,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained_5prompts,100pct,chexpert,test,macro_f1,0.38663923364978237,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained_5prompts,100pct,mimic,test,macro_auc,0.4057183712015297,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained_5prompts,100pct,mimic,test,macro_auprc,0.5596441494553251,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed
+pretrained_5prompts,100pct,mimic,test,macro_f1,0.36859101371458536,,1,member_c/member_c_metrics.csv,frozen inference; seed is an execution label and no training was performed

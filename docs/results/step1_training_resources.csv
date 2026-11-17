@@ -1,0 +1,21 @@
+method,budget,seed,epochs,best_epoch,training_seconds,training_validation_seconds,peak_memory_mb,total_parameters,trainable_parameters,training_performed,source,timing_definition
+linear_probe,100pct,42,5,,2735.07,,1272.4,136618649.0,2590,True,member_a/docs/step1_results_tables.md,sum of training epochs; validation excluded
+linear_probe,100pct,43,4,,2097.35,,1272.4,136618649.0,2590,True,member_a/docs/step1_results_tables.md,sum of training epochs; validation excluded
+linear_probe,100pct,44,4,,2071.17,,1272.4,136618649.0,2590,True,member_a/docs/step1_results_tables.md,sum of training epochs; validation excluded
+linear_probe,10pct,42,8,,526.83,,1231.4,136618649.0,2590,True,member_a/docs/step1_results_tables.md,sum of training epochs; validation excluded
+linear_probe,10pct,43,8,,463.51,,1250.9,136618649.0,2590,True,member_a/docs/step1_results_tables.md,sum of training epochs; validation excluded
+linear_probe,10pct,44,10,,561.59,,1231.4,136618649.0,2590,True,member_a/docs/step1_results_tables.md,sum of training epochs; validation excluded
+lora_r16,100pct,42,4,1.0,1037.600577719044,1061.8580991269846,1594.994140625,,285214,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r16,100pct,43,4,1.0,1028.2084495871095,1043.6468840989985,1522.0849609375,,285214,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r16,100pct,44,4,1.0,1038.9441488008017,1072.9267685250088,1454.884765625,,285214,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r16,10pct,42,10,8.0,258.0441064111656,556.6082372309756,1452.37548828125,,285214,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r16,10pct,43,8,5.0,193.1464708201238,411.7733944889914,1450.9228515625,,285214,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r16,10pct,44,9,6.0,233.29416616784877,486.3679355760105,1450.2333984375,,285214,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r8,100pct,42,4,1.0,1132.1111887079896,1120.7759444219992,1590.1689453125,,143902,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r8,100pct,43,4,1.0,1029.1422882960178,963.7797812520002,1514.77978515625,,143902,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r8,100pct,44,4,1.0,1049.457856909023,1073.6643061749928,1445.53759765625,,143902,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r8,10pct,42,10,10.0,256.77589452592656,556.3272336870141,1450.8896484375,,143902,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r8,10pct,43,9,6.0,226.2031623321236,447.1403883160092,1443.8798828125,,143902,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+lora_r8,10pct,44,10,10.0,267.2456963979057,564.08144209499,1447.28466796875,,143902,True,member_b/run_resources.csv,resource replay train-only time; validation/initialization/checkpoint I/O excluded
+pretrained,100pct,42,0,,0.0,0.0,,136616059.0,0,False,member_c/member_c_formal_summary.json,no training stage
+pretrained_5prompts,100pct,42,0,,0.0,0.0,,136616059.0,0,False,member_c/member_c_formal_summary.json,no training stage

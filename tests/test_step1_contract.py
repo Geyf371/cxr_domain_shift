@@ -28,6 +28,13 @@ def test_disease_specific_prompt_protocol():
     assert len({tuple(value["positive"]) for value in prompts.values()}) == len(CLASS_NAMES)
 
 
+def test_first_prompt_pair_preserves_step0_single_template():
+    prompts = build_prompts(templates=1)
+    for disease in CLASS_NAMES:
+        assert prompts[disease]["positive"] == [f"A chest X-ray showing {disease}."]
+        assert prompts[disease]["negative"] == [f"No evidence of {disease} on the chest X-ray."]
+
+
 def test_patient_smoke_selection_is_deterministic_and_patient_level():
     rows = []
     for patient in ("p3", "p1", "p2"):

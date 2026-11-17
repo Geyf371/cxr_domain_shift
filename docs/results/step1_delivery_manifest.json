@@ -1,0 +1,44 @@
+{
+  "status": "aggregate_results_passed_raw_handoff_pending",
+  "methods": [
+    "linear_probe",
+    "lora_r16",
+    "lora_r8",
+    "pretrained",
+    "pretrained_5prompts"
+  ],
+  "member_a": {
+    "branch": "feat/step1-clean",
+    "metrics_source": "docs/step1_results_tables.md"
+  },
+  "member_b": {
+    "branch": "step1-member-b",
+    "test_metric_rows": 24,
+    "training_runs": 12
+  },
+  "member_c": {
+    "branch": "step1-member-c",
+    "formal_runs": 4,
+    "prompt_set_version": "clinical_v1"
+  },
+  "coverage": {
+    "member_b_test_matrix_complete": true,
+    "member_b_same_evaluation_set_across_seeds": true,
+    "member_c_artifact_validation": "passed",
+    "all_five_methods_present": true,
+    "member_a_raw_predictions_features_checkpoints_received": false,
+    "member_b_raw_predictions_features_checkpoints_received": false,
+    "member_c_raw_predictions_features_available_locally": true
+  },
+  "handoff_readiness": {
+    "integrated_code": true,
+    "aggregate_metrics_and_resources": true,
+    "direct_step2_raw_artifact_consumption": false
+  },
+  "tracked_tables": [
+    "docs/results/step1_metrics_summary.csv",
+    "docs/results/step1_training_resources.csv",
+    "docs/results/step1_inference_resources.csv"
+  ],
+  "large_artifacts": "Member C full-test predictions and v/q/z are available in the local output directory. Member A/B raw predictions, v/q/z and checkpoints were not present in the received branches/files; collect their original experiment packages before declaring the Step 2 raw-artifact handoff complete."
+}

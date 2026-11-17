@@ -8,21 +8,21 @@ from .data import CLASS_NAMES
 
 PROMPT_SET_VERSION = "clinical_v1"
 
-# The first pair is the single-template baseline.  The five-prompt condition
+# The first pair exactly preserves the Step 0/A single-template baseline.  The five-prompt condition
 # uses all five pairs for the same disease and averages their logits.  Keeping
 # explicit disease entries makes the protocol auditable and avoids silently
 # treating a generic sentence template as disease-specific prompt design.
 DISEASE_PROMPTS = {
     "Atelectasis": {
         "positive": [
-            "A chest X-ray showing atelectasis.",
+            "A chest X-ray showing Atelectasis.",
             "The radiograph demonstrates an atelectatic pulmonary opacity.",
             "There is lung volume loss consistent with atelectasis.",
             "This chest radiograph is positive for atelectasis.",
             "Findings include linear or dependent atelectatic change.",
         ],
         "negative": [
-            "No evidence of atelectasis on the chest X-ray.",
+            "No evidence of Atelectasis on the chest X-ray.",
             "The radiograph shows no focal or subsegmental atelectasis.",
             "There is no atelectatic opacity or associated lung volume loss.",
             "This chest radiograph is negative for atelectasis.",
@@ -31,14 +31,14 @@ DISEASE_PROMPTS = {
     },
     "Cardiomegaly": {
         "positive": [
-            "A chest X-ray showing cardiomegaly.",
+            "A chest X-ray showing Cardiomegaly.",
             "The radiograph demonstrates an enlarged cardiac silhouette.",
             "The cardiac size is increased on this chest radiograph.",
             "This chest X-ray is positive for cardiomegaly.",
             "The cardiomediastinal silhouette is abnormally enlarged.",
         ],
         "negative": [
-            "No evidence of cardiomegaly on the chest X-ray.",
+            "No evidence of Cardiomegaly on the chest X-ray.",
             "The cardiac silhouette is not enlarged.",
             "The heart size is within normal limits on this radiograph.",
             "This chest X-ray is negative for cardiomegaly.",
@@ -47,14 +47,14 @@ DISEASE_PROMPTS = {
     },
     "Consolidation": {
         "positive": [
-            "A chest X-ray showing pulmonary consolidation.",
+            "A chest X-ray showing Consolidation.",
             "The radiograph demonstrates a focal air-space consolidation.",
             "There is dense pulmonary air-space opacity consistent with consolidation.",
             "This chest X-ray is positive for consolidation.",
             "Findings include a lobar or segmental consolidative opacity.",
         ],
         "negative": [
-            "No evidence of pulmonary consolidation on the chest X-ray.",
+            "No evidence of Consolidation on the chest X-ray.",
             "The radiograph shows no focal air-space consolidation.",
             "There is no dense consolidative pulmonary opacity.",
             "This chest X-ray is negative for consolidation.",
@@ -63,14 +63,14 @@ DISEASE_PROMPTS = {
     },
     "Edema": {
         "positive": [
-            "A chest X-ray showing pulmonary edema.",
+            "A chest X-ray showing Edema.",
             "The radiograph demonstrates interstitial or alveolar pulmonary edema.",
             "There is pulmonary vascular congestion consistent with edema.",
             "This chest X-ray is positive for pulmonary edema.",
             "Bilateral perihilar opacities are compatible with pulmonary edema.",
         ],
         "negative": [
-            "No evidence of pulmonary edema on the chest X-ray.",
+            "No evidence of Edema on the chest X-ray.",
             "The radiograph shows no interstitial or alveolar edema.",
             "There is no pulmonary vascular congestion.",
             "This chest X-ray is negative for pulmonary edema.",
@@ -79,14 +79,14 @@ DISEASE_PROMPTS = {
     },
     "Pleural Effusion": {
         "positive": [
-            "A chest X-ray showing pleural effusion.",
+            "A chest X-ray showing Pleural Effusion.",
             "The radiograph demonstrates pleural fluid.",
             "There is blunting of a costophrenic angle consistent with pleural effusion.",
             "This chest X-ray is positive for pleural effusion.",
             "Findings include a layering or dependent pleural effusion.",
         ],
         "negative": [
-            "No evidence of pleural effusion on the chest X-ray.",
+            "No evidence of Pleural Effusion on the chest X-ray.",
             "The radiograph shows no pleural fluid.",
             "The costophrenic angles are sharp without pleural effusion.",
             "This chest X-ray is negative for pleural effusion.",

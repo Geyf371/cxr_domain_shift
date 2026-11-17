@@ -1,0 +1,23 @@
+method,budget,seed,domain,split,input_images,evaluable_images,model_seconds,end_to_end_seconds,peak_memory_mb,batch_size,device,repeats,source,timing_definition
+linear_probe,100pct,42,chexpert,test,1000,,,16.29,1831.0,64,CUDA,1,member_a/docs/step1_results_tables.md,eval + no_grad; reported 1000-image elapsed time
+linear_probe,100pct,43,chexpert,test,1000,,,16.13,1831.0,64,CUDA,1,member_a/docs/step1_results_tables.md,eval + no_grad; reported 1000-image elapsed time
+linear_probe,100pct,44,chexpert,test,1000,,,16.81,1831.0,64,CUDA,1,member_a/docs/step1_results_tables.md,eval + no_grad; reported 1000-image elapsed time
+linear_probe,10pct,42,chexpert,test,1000,,,11.06,1831.0,64,CUDA,1,member_a/docs/step1_results_tables.md,eval + no_grad; reported 1000-image elapsed time
+linear_probe,10pct,43,chexpert,test,1000,,,10.23,1831.0,64,CUDA,1,member_a/docs/step1_results_tables.md,eval + no_grad; reported 1000-image elapsed time
+linear_probe,10pct,44,chexpert,test,1000,,,10.32,1831.0,64,CUDA,1,member_a/docs/step1_results_tables.md,eval + no_grad; reported 1000-image elapsed time
+lora_r16,100pct,42,chexpert,test,1000,,3.669375229665699,5.402684590003143,859.27197265625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r16,100pct,43,chexpert,test,1000,,3.6793313417001614,5.389108777686488,859.27197265625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r16,100pct,44,chexpert,test,1000,,3.715564568488238,5.439672162678714,859.27197265625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r16,10pct,42,chexpert,test,1000,,3.652960748663949,5.383109027694445,859.27197265625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r16,10pct,43,chexpert,test,1000,,3.700557200606757,5.406153785006609,859.27197265625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r16,10pct,44,chexpert,test,1000,,3.723260699907162,5.434896423985872,859.27197265625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r8,100pct,42,chexpert,test,1000,,3.683855607096728,5.396668543670482,858.73291015625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r8,100pct,43,chexpert,test,1000,,3.702626732546681,5.423691871653621,858.73291015625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r8,100pct,44,chexpert,test,1000,,3.7027443040472767,5.422897222995137,858.73291015625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r8,10pct,42,chexpert,test,1000,,3.69968950963812,5.407429384649731,858.73291015625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r8,10pct,43,chexpert,test,1000,,3.7046823674657694,5.42526150966296,858.73291015625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+lora_r8,10pct,44,chexpert,test,1000,,3.67964804028937,5.347690875001717,858.73291015625,16,CUDA,3,member_b/run_resources.csv,1000 images; warmup 5 batches; mean of 3 repeats; FP32
+pretrained,100pct,42,chexpert,test,1000,762.0,21.375524028957443,22.626483249998273,,4,cpu,1,member_c/member_c_metrics.csv,model forward and end-to-end times; CPU run; invalid-label rows skipped before forward
+pretrained,100pct,42,mimic,test,500,206.0,6.489777172002505,17.3264155830002,,4,cpu,1,member_c/member_c_metrics.csv,model forward and end-to-end times; CPU run; invalid-label rows skipped before forward
+pretrained_5prompts,100pct,42,chexpert,test,1000,762.0,21.4814928480082,22.688763250000193,,4,cpu,1,member_c/member_c_metrics.csv,model forward and end-to-end times; CPU run; invalid-label rows skipped before forward
+pretrained_5prompts,100pct,42,mimic,test,500,206.0,6.577926171015861,17.431555999999546,,4,cpu,1,member_c/member_c_metrics.csv,model forward and end-to-end times; CPU run; invalid-label rows skipped before forward

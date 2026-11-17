@@ -46,3 +46,7 @@ MedCLIP 预训练已使用过 MIMIC-CXR 和 CheXpert，结论限定于本次下�
 ## 成员B：LoRA Step1 交付
 
 LoRA-r8/r16通过现有factory接入，训练与评测约定不变。实现见 [LoRA说明](docs/lora_implementation.md)，12组结果、离线代码分支和checkpoint的交接方式见 [交付说明](docs/lora_delivery.md)。大型实验产物位于仓库外，不提交Git。
+
+## Step1 A/B/C 整合状态
+
+A 的 Linear Probe、B 的 LoRA-r8/r16 与 C 的单/五提示已合并，指标、资源和交接完整性见 [Step1 整合与交接说明](docs/step1_delivery.md)。大体积预测、特征和 checkpoint 继续通过仓库外交付。
