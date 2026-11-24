@@ -1,0 +1,87 @@
+{
+  "protocol": {
+    "test_domains": [
+      "mimic",
+      "chexpert"
+    ],
+    "class_order": [
+      "Atelectasis",
+      "Cardiomegaly",
+      "Consolidation",
+      "Edema",
+      "Pleural Effusion"
+    ],
+    "budgets": [
+      "10pct",
+      "100pct"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "f1_threshold": 0.5,
+    "auprc_definition": "average_precision_score",
+    "transfer_drop": "MIMIC test minus CheXpert test",
+    "shared_class_auc": "mean over diseases with an AUC defined on both domains",
+    "frozen_baseline": "one fixed single-template run per domain; no seed or budget sweep"
+  },
+  "run_counts": {
+    "main_evaluation_runs": 38,
+    "loaded_prediction_runs": 40,
+    "step1_macro_summaries_matched": 40,
+    "case_pages": 5
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "pandas": "3.0.1",
+    "scikit_learn": "1.9.1"
+  },
+  "manifests": {
+    "mimic_manifest.csv": "f8b39bf71470cc1d3afe9d9a8979dd050aa3d3a98b412cc5804ef85f7ea71851",
+    "chexpert_manifest.csv": "5aa1c0607c90983c5de0c341258efa06fc3509bfea2a5815d4a73a14f7787696"
+  },
+  "predictions": {
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_chexpert_test_100pct_seed42.csv": "922eaf322265df9a475d18e3b658f19c5c78b628e4fe9b1cad391fa2622ef2b1",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_mimic_test_100pct_seed42.csv": "625016c46f0c643b62d62daeaab5b52a6d377a29bcdf84b4ba5eea64f1215424",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_chexpert_test_100pct_seed43.csv": "bd8171ffce7d909506d7c9f5eda2bcbcd3bdc2d7e398942fea44d4dde1eaddfd",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_mimic_test_100pct_seed43.csv": "7ff5472da7834fd7dd4038345947831765ae6699e7ae356cbeafb764b947b551",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_chexpert_test_100pct_seed44.csv": "bdbbfd61d60ffd455fb314340b914756729da66a5c3df7888a50def341b658fc",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_mimic_test_100pct_seed44.csv": "9e5cad084240d0f1cd1e0d5e5341057f4ae28a8ee7f7e068d85f248aecd4d8a4",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_chexpert_test_10pct_seed42.csv": "1fa27b88356f55615621d3918d9fef450fd696e957abcc703a281084e965f814",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_mimic_test_10pct_seed42.csv": "b32d6dc803c33853ec7a68d860db3e1dbeab94f3fdbb2ec7d0458f7a4871b8ca",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_chexpert_test_10pct_seed43.csv": "e0380d0742d8520ad3421d8271e5286e08b3433bd247408cf94a829938878c08",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_mimic_test_10pct_seed43.csv": "f84ef2e1c726dc8296e074ec44a9eb743f3a4416763bd5e3d09449a100d8cc0b",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_chexpert_test_10pct_seed44.csv": "99fcad6ac55a117f4dcdb3243ee37c1dcb4534b05ac9ddc528001fef21b84242",
+    "Step1交接资源/linear_probe/predictions_experiment_linear_probe_mimic_test_10pct_seed44.csv": "12d82dc6f79a195290635109408764c21910ba2a01bd4eb225d7bb4af47d8e2f",
+    "Step1交接资源/lora_step1/runs/lora_r16_100pct_seed42/outputs/predictions_experiment_lora_r16_chexpert_test_100pct_seed42.csv": "fa8653f616618770cbe81d9688c26632b42d92322457c75d93102c12fc25d5e9",
+    "Step1交接资源/lora_step1/runs/lora_r16_100pct_seed42/outputs/predictions_experiment_lora_r16_mimic_test_100pct_seed42.csv": "c2d65ce0df7f6fd988c4c9332b5722f8501755363561a648991f4aaaf8f175bf",
+    "Step1交接资源/lora_step1/runs/lora_r16_100pct_seed43/outputs/predictions_experiment_lora_r16_chexpert_test_100pct_seed43.csv": "9e2f1df5cf5fad3b346a5e41f8b307a096ee197ecfc85100e321f3eae06cee46",
+    "Step1交接资源/lora_step1/runs/lora_r16_100pct_seed43/outputs/predictions_experiment_lora_r16_mimic_test_100pct_seed43.csv": "be8ad9b939c9731bc3e0c6fa79bde9d8b3331f284a7a3d055479683dcd9605ec",
+    "Step1交接资源/lora_step1/runs/lora_r16_100pct_seed44/outputs/predictions_experiment_lora_r16_chexpert_test_100pct_seed44.csv": "be14017386ee783292d54ad87308f82a3d39aad8bb0e855de0cd66ddaf504105",
+    "Step1交接资源/lora_step1/runs/lora_r16_100pct_seed44/outputs/predictions_experiment_lora_r16_mimic_test_100pct_seed44.csv": "5c203a62230da2d8a3c7531c7600d7225319aaba1edf9044a3ad84d6edb04b80",
+    "Step1交接资源/lora_step1/runs/lora_r16_10pct_seed42/outputs/predictions_experiment_lora_r16_chexpert_test_10pct_seed42.csv": "dc97a5e0ea4963a30c347aefdf1827068d06b7bcb4f1acef09072c704277cd1e",
+    "Step1交接资源/lora_step1/runs/lora_r16_10pct_seed42/outputs/predictions_experiment_lora_r16_mimic_test_10pct_seed42.csv": "ef7173a8f918f17b87958ccccb76a1b1b5278d05f345777bb03e545abc1d171d",
+    "Step1交接资源/lora_step1/runs/lora_r16_10pct_seed43/outputs/predictions_experiment_lora_r16_chexpert_test_10pct_seed43.csv": "b6a4abfcbca41a18243f36add7b1e8887a33ea367e0186d3cd63f02aef40145e",
+    "Step1交接资源/lora_step1/runs/lora_r16_10pct_seed43/outputs/predictions_experiment_lora_r16_mimic_test_10pct_seed43.csv": "b674934f26995e00546569919909f0ccd6b48dc9b0ee1a9fba65f33dbc3753cf",
+    "Step1交接资源/lora_step1/runs/lora_r16_10pct_seed44/outputs/predictions_experiment_lora_r16_chexpert_test_10pct_seed44.csv": "f7cd4da00c78827552180099d3b193122f245c4dd391b2a334bb561668caf42c",
+    "Step1交接资源/lora_step1/runs/lora_r16_10pct_seed44/outputs/predictions_experiment_lora_r16_mimic_test_10pct_seed44.csv": "f72b03c714b3d4276db6614b5cbc70e21b34e9724850ff2077aebe758d40d4a2",
+    "Step1交接资源/lora_step1/runs/lora_r8_100pct_seed42/outputs/predictions_experiment_lora_r8_chexpert_test_100pct_seed42.csv": "0b2ad9121432ebd0d6fe833357618991954baea6e565ff638d0739f59e156e4e",
+    "Step1交接资源/lora_step1/runs/lora_r8_100pct_seed42/outputs/predictions_experiment_lora_r8_mimic_test_100pct_seed42.csv": "90df252295ea56cc281f095912d72c59bb9bb713477ed56b90ec8b1af63d4d0c",
+    "Step1交接资源/lora_step1/runs/lora_r8_100pct_seed43/outputs/predictions_experiment_lora_r8_chexpert_test_100pct_seed43.csv": "d7e74c69e6ea6f1b8f46fa1845a54669b7a8dcfcf446d85232adecfffc329c73",
+    "Step1交接资源/lora_step1/runs/lora_r8_100pct_seed43/outputs/predictions_experiment_lora_r8_mimic_test_100pct_seed43.csv": "2d2d79e61872b9bade5de526eabb73bce3d0ad59d020c8b239801247be7a1ceb",
+    "Step1交接资源/lora_step1/runs/lora_r8_100pct_seed44/outputs/predictions_experiment_lora_r8_chexpert_test_100pct_seed44.csv": "acee9fe55a3156243a017587d06494218d8753e55249a74475ed967cc736851a",
+    "Step1交接资源/lora_step1/runs/lora_r8_100pct_seed44/outputs/predictions_experiment_lora_r8_mimic_test_100pct_seed44.csv": "00020bc3c1833f78bf524f0a35770f0abfa03d7d4bdc3f169bf066919a8889a0",
+    "Step1交接资源/lora_step1/runs/lora_r8_10pct_seed42/outputs/predictions_experiment_lora_r8_chexpert_test_10pct_seed42.csv": "e92c1c03d36ea7f82250f9d4e557606298e691000fb91c85d4ff8f125c1e852c",
+    "Step1交接资源/lora_step1/runs/lora_r8_10pct_seed42/outputs/predictions_experiment_lora_r8_mimic_test_10pct_seed42.csv": "e1e350b0f3a56aee7e3aeaaf9bd218a4abc51a946d1ca6580f858598fe174b90",
+    "Step1交接资源/lora_step1/runs/lora_r8_10pct_seed43/outputs/predictions_experiment_lora_r8_chexpert_test_10pct_seed43.csv": "d047990d7d2fe7ff2d0d1243545935cc03a56b296cdb6d9ff727aaa3b86ceb5e",
+    "Step1交接资源/lora_step1/runs/lora_r8_10pct_seed43/outputs/predictions_experiment_lora_r8_mimic_test_10pct_seed43.csv": "0341f937a8f8c59a6cdd57bda4578779be95b5441eb136808a1a79702cdcf36e",
+    "Step1交接资源/lora_step1/runs/lora_r8_10pct_seed44/outputs/predictions_experiment_lora_r8_chexpert_test_10pct_seed44.csv": "b19f20669086ae58988ca748141b9ac37bef6f590c6d1f81d91ff6b40aaa185b",
+    "Step1交接资源/lora_step1/runs/lora_r8_10pct_seed44/outputs/predictions_experiment_lora_r8_mimic_test_10pct_seed44.csv": "f3d5fb8412c57cefecf97da13580fd324d5fd996678b4d612199518968c623f5",
+    "Step1交接资源/frozen_prompts/predictions_experiment_pretrained_chexpert_test_100pct_seed42.csv": "23002f394b1d5fd2aaee53f2cae245218aa32904ebf0c69792cda8f5a86f0841",
+    "Step1交接资源/frozen_prompts/predictions_experiment_pretrained_mimic_test_100pct_seed42.csv": "191ecc92ea77e3544572f8c3e383b24fad77f7cde8e14bcb54537e41b1936e14",
+    "Step1交接资源/frozen_prompts/predictions_experiment_pretrained_5prompts_chexpert_test_100pct_seed42.csv": "79364fe85c681761a8d619d41bf8e6337d2d8025d2b7fa7fbdf87c0884814e28",
+    "Step1交接资源/frozen_prompts/predictions_experiment_pretrained_5prompts_mimic_test_100pct_seed42.csv": "e3963b2c94f3041fa73e2f962316ccf20669abf06736547b9562c0661d967e87"
+  }
+}

@@ -1,0 +1,11 @@
+﻿domain,class_name,valid_count,positive_count,negative_count,unknown_count,test_manifest_count,positive_rate
+chexpert,Atelectasis,164,161,3,836,1000,0.9817073170731707
+chexpert,Cardiomegaly,162,89,73,838,1000,0.5493827160493827
+chexpert,Consolidation,233,52,181,767,1000,0.22317596566523606
+chexpert,Edema,318,197,121,682,1000,0.6194968553459119
+chexpert,Pleural Effusion,462,249,213,538,1000,0.538961038961039
+mimic,Atelectasis,61,61,0,439,500,1.0
+mimic,Cardiomegaly,111,71,40,389,500,0.6396396396396397
+mimic,Consolidation,29,13,16,471,500,0.4482758620689655
+mimic,Edema,74,28,46,426,500,0.3783783783783784
+mimic,Pleural Effusion,106,48,58,394,500,0.4528301886792453
